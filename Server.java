@@ -1,13 +1,13 @@
 import java.net.*;
 import java.io.*;
 
-class Server{
+public class Server{
    private ServerSocket serverSocket;
    private Socket clientSocket;
    private PrintWriter out;
    private BufferedReader in;
 
-   public void startConnection(String ip, int port) throws IOException
+   public void start(int port) throws IOException
    {
       serverSocket = new ServerSocket(port);
       clientSocket = serverSocket.accept();

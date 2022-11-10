@@ -1,7 +1,6 @@
 import java.util.*;
-import java.lang.*;
-import java.net.*;
 import java.io.*;
+import java.net.InetAddress;
 
 public class FileTransfering
 {
@@ -10,5 +9,16 @@ public class FileTransfering
 
         System.out.println("Its working");
 
+        Server server = new Server();
+        Client client = new Client();
+
+        try{
+            server.start(2222);
+            client.startConnection(InetAddress.getLocalHost().getHostAddress(),2222);
+        }
+        catch(IOException ex)
+        {
+            System.out.println("exeption Thrown!");
+        }
     }
 }
