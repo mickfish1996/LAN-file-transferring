@@ -1,31 +1,40 @@
 import java.util.*;
+
+import javax.crypto.spec.IvParameterSpec;
+
+import java.net.*;
 import java.io.*;
-import java.net.InetAddress;
 
 public class FileTransfering
-{
+{ 
+    /*******************************************************
+     * getInput
+     * 
+     *******************************************************/
+    private static String getInput()
+    {
+        Scanner in = new Scanner(System.in);
+        return in.nextLine();
+    }
+
     public static void main(String[] args)
     {
+        Sending send = new Sending();
+        System.out.println("Sending or Reciving file? ");
 
-        Server server = new Server();
-        Client client = new Client();
 
-        try
-        {
-            server.startServer();
-        }
-        catch(IOException ex)
-        {
-            System.out.println("Exeption Thrown!");
-        }
+        
+        String input = getInput();
 
-        try
+        if(input.equals("Sending"))
         {
-            client.start();
-        }
-        catch(IOException ex)
-        {
-            System.out.println("Exception Thrown!");
+            try{
+                System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
+
+            } catch(UnknownHostException ex) {
+                ex.printStackTrace();
+            }
+            send.start();
         }
     }
 }

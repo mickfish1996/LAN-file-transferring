@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 import javax.swing.*;
 
-public class Client {
+public class Reciving {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
