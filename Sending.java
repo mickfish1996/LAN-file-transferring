@@ -19,7 +19,7 @@ public class Sending{
       sock = serverSock.accept();
 
       DataOutputStream out = new DataOutputStream(sock.getOutputStream());
-      out.writeUTF("I am fine, thank you");
+      out.writeUTF("Connected");
 
       DataInputStream in = new DataInputStream(sock.getInputStream());
       System.out.println(in.readUTF());
