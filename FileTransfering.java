@@ -34,7 +34,12 @@ public class FileTransfering
             } catch(UnknownHostException ex) {
                 ex.printStackTrace();
             }
-            send.start();
+            try{
+                send.start();
+            }
+            catch(IOException ex) {
+                System.out.println("Error");
+            }
         }
     }
 }
