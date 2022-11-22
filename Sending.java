@@ -11,15 +11,21 @@ public class Sending{
 
    public void startServer() throws IOException
    {
-      int port = Integer.parseInt(JOptionPane.showInputDialog("Input Your Port: "));
-      String ip = JOptionPane.showInputDialog("Input Your IP Server: ");
+      //int fileName = Integer.parseInt(JOptionPane.showInputDialog("Enter file name: "));
+      String fileName = JOptionPane.showInputDialog("Enter file name location: ");
       serverSock = new ServerSocket(port);
       
-      System.out.println("Server started");
+      JOptionPane.showMessageDialog(null, "Server started");
+      JOptionPane.showMessageDialog(null, "Waiting client");
+      
       sock = serverSock.accept();
 
-      DataOutputStream out = new DataOutputStream(sock.getOutputStream());
-      out.writeUTF("Connected");
+      
+
+      BufferedOutputStream out = new BufferedOutputStream(sock.getOutputStream());
+      FileInputStream fis = new FileInputStream(fileName);
+      BufferedInputStream bis = new BufferedInputStream(fis);
+      int n = -1;
 
       DataInputStream in = new DataInputStream(sock.getInputStream());
       System.out.println(in.readUTF());
