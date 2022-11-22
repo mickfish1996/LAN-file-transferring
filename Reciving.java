@@ -33,13 +33,6 @@ public class Reciving {
     {
        List<String> ipList = getNetworkDeviceIPs(port);
  
-       System.out.println("\nListing Device Names - Please Wait ...");
- 
-       for(int i = 0; i < ipList.size(); i++)
-       {
-          System.out.println(getDeviceName(ipList.get(i)));
-       }
- 
        System.out.println("\nTrying To Connect To Devices...");
        connectToDevices(ipList, port);
     }
@@ -88,34 +81,6 @@ public class Reciving {
           return ipList;
     }
  
-    public static String getDeviceName(String localIP) {
-       String result = "";
-       try {
-          InetAddress address = InetAddress.getByName(localIP);
-          if (address.isReachable(500)) {
-             // Device is turned on and can be pinged!;
-             result = address.toString();
-          }
-          else if (!address.getHostAddress().equals(address.getHostName())) {
-             // Device is identified in a DNS lookup!
-             result = address.toString();
-          }
-          else {
-             // if you keep getting something like "Unknown Device!/192.168.0.5 then the host
-             // address and host name are the same, meaning the host name could not be resolved.
-             // This means that either your router just isn't storing the information OR those 
-             // devices just choose not to submit their host name to the router, and that is why
-             // you will continually get this message. Apparently, there is no way around this 
-             // because those device names literally aren't stored anywhere.
-             result = "Unknown Device!/" + address.toString().substring(0,address.toString().indexOf("/"));
-          }
-       } 
-       catch (UnknownHostException ex) { System.out.println(ex.getMessage()); } 
-       catch (IOException ex) { System.out.println(ex.getMessage()); }
- 
-       return result;
-    }
- 
     public static void connectToDevices(List<String> localIPAddresses, int port) {
        // try to connect to the device(s)....
        // You'll need to play with this.
@@ -126,15 +91,6 @@ public class Reciving {
              Socket thisSystem = new Socket(localIPAddresses.get(i), port);
  
              System.out.println("Just connected to: " + thisSystem.getRemoteSocketAddress());
-             OutputStream outToServer = thisSystem.getOutputStream();
-             DataOutputStream out = new DataOutputStream(outToServer);
- 
-             out.writeUTF("Hello from: " + thisSystem.getLocalSocketAddress());
-             InputStream inFromServer = thisSystem.getInputStream();
-             DataInputStream in = new DataInputStream(inFromServer);
- 
-             System.out.println("Device says " + in.readUTF());
-             thisSystem.close();
  
              // Reciving rec = new Reciving();
              // rec.start("192.168.1.25", 6060);

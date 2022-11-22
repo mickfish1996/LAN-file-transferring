@@ -40,10 +40,15 @@ public class Sending{
       BufferedInputStream bis = new BufferedInputStream(fis);
       int n = -1;
 
-      DataInputStream in = new DataInputStream(sock.getInputStream());
-      System.out.println(in.readUTF());
-      sock.close();
+      byte[] buffer;
 
+      buffer = new byte[70022386];
+
+      while((n = bis.read(buffer)) > -1)
+      {
+         out.write(buffer, 0, n);
+         out.flush();
+      }
    }
 
    public void start() throws IOException
