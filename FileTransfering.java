@@ -1,7 +1,4 @@
 import java.util.*;
-
-import javax.crypto.spec.IvParameterSpec;
-
 import java.net.*;
 import java.io.*;
 
@@ -20,6 +17,7 @@ public class FileTransfering
     public static void main(String[] args)
     {
         Sending send = new Sending();
+        Reciving recive = new Reciving();
         System.out.println("Sending or Reciving file? ");
 
 
@@ -34,7 +32,29 @@ public class FileTransfering
             } catch(UnknownHostException ex) {
                 ex.printStackTrace();
             }
-            send.start();
+            try{
+                send.start();
+            }
+            catch(IOException ex) {
+                System.out.println("Error");
+            }
+        }
+
+        else if(input.equals("Reciving"))
+        {
+            try{
+                System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
+
+            } catch(UnknownHostException ex) {
+                ex.printStackTrace();
+            }
+
+            try{
+                recive.start();
+            }
+            catch(IOException ex) {
+                System.out.println("Error");
+            }
         }
     }
 }

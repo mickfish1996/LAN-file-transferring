@@ -29,7 +29,7 @@ public class Reciving {
     //    sock.close();
     // }
  
-    public static void start()
+    public static void start() throws IOException
     {
        List<String> ipList = getNetworkDeviceIPs(port);
  
