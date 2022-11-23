@@ -28,8 +28,8 @@ public class Sending{
 
       serverSock = new ServerSocket(port);
       
-      JOptionPane.showMessageDialog(null, "Server started");
-      JOptionPane.showMessageDialog(null, "Waiting client");
+      // JOptionPane.showMessageDialog(null, "Server started");
+      // JOptionPane.showMessageDialog(null, "Waiting client");
 
       sock = serverSock.accept();
 
