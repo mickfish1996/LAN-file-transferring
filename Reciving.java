@@ -4,31 +4,10 @@ import javax.swing.*;
 import java.util.*;
 
 public class Reciving {
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
     private static int port = 6066;
-
-    // public void startServer() throws IOException
-    // {
-    //    int port = Integer.parseInt(JOptionPane.showInputDialog("Input Your Port: "));
-    //    String ip = JOptionPane.showInputDialog("Input Your IP Server: ");
-    //    serverSock = new ServerSocket(6066);
-    //    sock = serverSock.accept();
-    //    DataOutputStream out = new DataOutputStream(sock.getOutputStream());
-    //    out.writeUTF("I am fine, thank you");
- 
-    //    DataInputStream in = new DataInputStream(sock.getInputStream());
-    //    System.out.println(in.readUTF());
-    //    sock.close();
- 
-    // }
- 
-    // public void stop() throws IOException
-    // {
-    //    sock.close();
-    // }
- 
+   /************************************************************************
+    * 
+    ************************************************************************/
     public static void start() throws IOException
     {
        List<String> ipList = getNetworkDeviceIPs(port);
@@ -36,7 +15,9 @@ public class Reciving {
        System.out.println("\nTrying To Connect To Devices...");
        connectToDevices(ipList, port);
     }
- 
+   /************************************************************************
+    * 
+    ************************************************************************/
     public static List<String> getNetworkDeviceIPs(int portNumber)
     {
           Socket socket = new Socket();
@@ -80,7 +61,9 @@ public class Reciving {
           }
           return ipList;
     }
- 
+   /************************************************************************
+    * 
+    ************************************************************************/
     public static void connectToDevices(List<String> localIPAddresses, int port) {
        // try to connect to the device(s)....
        // You'll need to play with this.
@@ -101,6 +84,9 @@ public class Reciving {
        }
     }
 
+   /************************************************************************
+    * 
+    ************************************************************************/
    public static void reciveFile(String ip, File file) throws IOException
    {
       Socket socket = new Socket(ip, port);
@@ -124,6 +110,9 @@ public class Reciving {
       socket.close();
    }
 
+   /************************************************************************
+    * 
+    ************************************************************************/
    public static File getFolder()
    {
       JFileChooser fileChooser = new JFileChooser();
