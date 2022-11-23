@@ -84,18 +84,59 @@ public class Reciving {
     public static void connectToDevices(List<String> localIPAddresses, int port) {
        // try to connect to the device(s)....
        // You'll need to play with this.
+       File file = getFolder();
        for (int i = 0; i < localIPAddresses.size(); i++) {
           if (i > 0) { System.out.println(""); }
           try {
              System.out.println("Connecting to: " + localIPAddresses.get(i) + " on port: " + port + " - Please Wait...");
-             Socket thisSystem = new Socket(localIPAddresses.get(i), port);
+             reciveFile(localIPAddresses.get(i), file);
  
-             System.out.println("Just connected to: " + thisSystem.getRemoteSocketAddress());
+             //System.out.println("Just connected to: " + thisSystem.getRemoteSocketAddress());
  
              // Reciving rec = new Reciving();
              // rec.start("192.168.1.25", 6060);
+             break;
           }
           catch(IOException e) { System.out.println(e.getLocalizedMessage()); }
        }
     }
+
+   public static void reciveFile(String ip, File file) throws IOException
+   {
+      Socket socket = new Socket(ip, port);
+      BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
+      FileOutputStream fos = new FileOutputStream(file);
+      int n;
+      byte[] buffer = new byte[70022386];
+      JOptionPane.showMessageDialog(null, "Connected");
+
+      while ((n = bis.read(buffer)) >-1)
+      {
+         fos.write(buffer, 0, n);
+         if(n<1024)
+         {
+            fos.close();
+            bis.close();
+            break;
+         }
+         fos.flush();
+      }
+      socket.close();
+   }
+
+   public static File getFolder()
+   {
+      JFileChooser fileChooser = new JFileChooser();
+      fileChooser.setCurrentDirectory(new File("user.home"));
+      fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+      int result = fileChooser.showOpenDialog(null);
+      File file = new File("");
+      if(result == JFileChooser.APPROVE_OPTION)
+      {
+         file = fileChooser.getSelectedFile();
+      }
+
+      return file;
+   }
 }
