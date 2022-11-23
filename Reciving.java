@@ -91,6 +91,7 @@ public class Reciving {
    {
       Socket socket = new Socket(ip, port);
       BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
+      file.setWritable(true);
       FileOutputStream fos = new FileOutputStream(file);
       int n;
       byte[] buffer = new byte[70022386];
@@ -117,7 +118,7 @@ public class Reciving {
    {
       JFileChooser fileChooser = new JFileChooser();
       fileChooser.setCurrentDirectory(new File("user.home"));
-      fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+      // fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
       int result = fileChooser.showOpenDialog(null);
       File file = new File("");
