@@ -2,6 +2,7 @@ import java.util.*;
 import java.net.*;
 import java.io.*;
 
+
 public class FileTransfering
 { 
     /*******************************************************
@@ -18,43 +19,48 @@ public class FileTransfering
     {
         Sending send = new Sending();
         Reciving recive = new Reciving();
-        System.out.println("Sending or Reciving file? ");
+        gui gi = new gui();
+        gi.createWindow();
 
-
-        
-        String input = getInput();
-
-        if(input.equals("Sending"))
-        {
-            try{
-                System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
-
-            } catch(UnknownHostException ex) {
-                ex.printStackTrace();
-            }
-            try{
-                send.start();
-            }
-            catch(IOException ex) {
-                System.out.println("Error");
-            }
-        }
-
-        else if(input.equals("Reciving"))
-        {
-            try{
-                System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
-
-            } catch(UnknownHostException ex) {
-                ex.printStackTrace();
-            }
-
-            try{
-                recive.start();
-            }
-            catch(IOException ex) {
-                System.out.println("Error");
-            }
-        }
     }
 }
+//         System.out.println("Sending or Reciving file? ");
+
+
+
+//         String input = getInput();
+
+//         if(input.equals("Sending"))
+//         {
+//             try{
+//                 System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
+
+//             } catch(UnknownHostException ex) {
+//                 ex.printStackTrace();
+//             }
+//             try{
+//                 send.start();
+//             }
+//             catch(IOException ex) {
+//                 System.out.println("Error");
+//             }
+//         }
+
+//         else if(input.equals("Reciving"))
+//         {
+//             try{
+//                 System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
+
+//             } catch(UnknownHostException ex) {
+//                 ex.printStackTrace();
+//             }
+
+//             try{
+//                 recive.start();
+//             }
+//             catch(IOException ex) {
+//                 System.out.println("Error");
+//             }
+//         }
+//     }
+// }
