@@ -81,7 +81,7 @@ public class Reciving {
 
             if (stopProcess)
             {
-               gui.connected();
+               gui.checkRepeat("Transer Successful!");
                break;
             }
               
@@ -90,7 +90,7 @@ public class Reciving {
             System.out.println(e.getLocalizedMessage());
             if (stopProcess)
             {
-               gui.connected();
+               gui.checkRepeat("Transer Successful!");
                break;
             }
                
@@ -98,7 +98,7 @@ public class Reciving {
       }
 
       if (!stopProcess)
-      gui.failConnect();
+      gui.checkRepeat("Failed to connect to server!");
 
    }
 
@@ -113,7 +113,7 @@ public class Reciving {
       FileOutputStream fos = new FileOutputStream(file);
       int n;
       byte[] buffer = new byte[70022386];
-      JOptionPane.showMessageDialog(null, "Connected");
+      gui.sendFrame("Connected To Device");
 
       while ((n = bis.read(buffer)) >-1)
       {

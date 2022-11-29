@@ -178,12 +178,12 @@ public class gui{
    /*******************************************************************
     * 
     *******************************************************************/
-    public static void failConnect()
+    public static void checkRepeat(String message)
     {
-      frame.setVisible(false);
+      frame.dispose();
       frame = new JFrame("File Transfering");
 
-      JPanel panel = displayMessage("Failed to connect to server!");
+      JPanel panel = displayMessage(message);
 
       panel = addAgain(panel);
 
@@ -205,34 +205,6 @@ public class gui{
    {
       frame.dispose();
    }
-
-   /*******************************************************************
-    * 
-    *******************************************************************/
-    public static void connected()
-    {
-      frame.setVisible(false);
-      frame = new JFrame("File Transfering");
-
-      JPanel panel = displayMessage("Transer Successful!");
-
-      panel = addAgain(panel);
-
-
-      frame.add(panel);
-      
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-      frame.setLocationRelativeTo(null);
-
-      frame.pack();
-      frame.setVisible(true);
-    }
-
-    public static Sending getSending()
-    {
-      return sending;
-    }
 }
 
 
