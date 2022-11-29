@@ -19,8 +19,7 @@ public class FileTransfering
     {
         Sending send = new Sending();
         Reciving receive = new Reciving();
-        gui gi = new gui();
-        gi.createWindow(send, receive);
+        gui.createWindow(send, receive);
 
     }
 }

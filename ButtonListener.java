@@ -6,7 +6,6 @@ public class ButtonListener implements ActionListener
 {
    Sending send = new Sending();
    Reciving receive = new Reciving();
-   gui gi = new gui();
 
    public void actionPerformed(ActionEvent e) 
    {
@@ -16,9 +15,9 @@ public class ButtonListener implements ActionListener
       {
          try
          {
-            gi.sendFrame(gi.getIP());
-            gi.getSending().startServer();
-            gi.resetGui();
+            gui.sendFrame(gui.getIP());
+            gui.getSending().startServer();
+            gui.resetGui();
 
          } catch(IOException ex) {
             System.out.println("ERROR!!!");
@@ -31,10 +30,10 @@ public class ButtonListener implements ActionListener
             System.out.println("ERROR!!!");
          }
       } else if(command.equals("no")) {
-         gi.close();
+         gui.close();
          System.exit(0);
       } else if (command.equals("yes")){
-         gi.resetGui();
+         gui.resetGui();
 
       }
    }

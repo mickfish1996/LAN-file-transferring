@@ -6,7 +6,6 @@ import java.util.*;
 public class Reciving {
     private static int port = 6066;
     private static boolean stopProcess = false;
-    private static gui gi = new gui();
 
    /************************************************************************
     * 
@@ -15,7 +14,7 @@ public class Reciving {
     {
        List<String> ipList = getNetworkDeviceIPs(port);
 
-       gi.connecting();
+       gui.connecting();
  
        System.out.println("\nTrying To Connect To Devices...");
        connectToDevices(ipList, port);
@@ -82,7 +81,7 @@ public class Reciving {
 
             if (stopProcess)
             {
-               gi.connected();
+               gui.connected();
                break;
             }
               
@@ -91,7 +90,7 @@ public class Reciving {
             System.out.println(e.getLocalizedMessage());
             if (stopProcess)
             {
-               gi.connected();
+               gui.connected();
                break;
             }
                
@@ -99,7 +98,7 @@ public class Reciving {
       }
 
       if (!stopProcess)
-      gi.failConnect();
+      gui.failConnect();
 
    }
 
