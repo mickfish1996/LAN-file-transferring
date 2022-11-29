@@ -23,7 +23,7 @@ public class Reciving {
    /************************************************************************
     * 
     ************************************************************************/
-    public static List<String> getNetworkDeviceIPs(int portNumber)
+    public List<String> getNetworkDeviceIPs(int portNumber)
     {
           Socket socket = new Socket();
           List<String> ipList = new ArrayList<>(); // List<> Array to hold IP Addresses
@@ -106,7 +106,7 @@ public class Reciving {
    /************************************************************************
     * 
     ************************************************************************/
-   public static void reciveFile(String ip, File file) throws IOException
+   public void reciveFile(String ip, File file) throws IOException
    {
       Socket socket = new Socket(ip, port);
       BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
@@ -135,7 +135,7 @@ public class Reciving {
    /************************************************************************
     * 
     ************************************************************************/
-   public static File getFolder()
+   public File getFolder()
    {
       JFileChooser fileChooser = new JFileChooser();
       fileChooser.setCurrentDirectory(new File("user.home"));
