@@ -205,6 +205,11 @@ public class gui{
    {
       frame.dispose();
    }
+
+    public static Sending getSending()
+    {
+      return sending;
+    }
 }
 
 
