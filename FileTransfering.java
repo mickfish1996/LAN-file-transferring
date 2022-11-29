@@ -18,9 +18,9 @@ public class FileTransfering
     public static void main(String[] args)
     {
         Sending send = new Sending();
-        Reciving recive = new Reciving();
+        Reciving receive = new Reciving();
         gui gi = new gui();
-        gi.createWindow();
+        gi.createWindow(send, receive);
 
     }
 }

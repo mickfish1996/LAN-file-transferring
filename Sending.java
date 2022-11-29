@@ -12,6 +12,7 @@ public class Sending{
    private ServerSocket serverSock;
    private static int port = 6066;
 
+
    public void startServer() throws IOException
    {
       //int fileName = Integer.parseInt(JOptionPane.showInputDialog("Enter file name: "));
@@ -49,6 +50,8 @@ public class Sending{
          out.write(buffer, 0, n);
          out.flush();
       }
+
+      serverSock.close();
    }
 
    public void start() throws IOException

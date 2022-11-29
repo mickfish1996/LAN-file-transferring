@@ -5,12 +5,17 @@ import java.util.*;
 
 public class Reciving {
     private static int port = 6066;
+    private static boolean stopProcess = false;
+    private static gui gi = new gui();
+
    /************************************************************************
     * 
     ************************************************************************/
-    public static void start() throws IOException
+    public void start() throws IOException
     {
        List<String> ipList = getNetworkDeviceIPs(port);
+
+       gi.connecting();
  
        System.out.println("\nTrying To Connect To Devices...");
        connectToDevices(ipList, port);
@@ -64,25 +69,39 @@ public class Reciving {
    /************************************************************************
     * 
     ************************************************************************/
-    public static void connectToDevices(List<String> localIPAddresses, int port) {
+    public void connectToDevices(List<String> localIPAddresses, int port) 
+    {
        // try to connect to the device(s)....
        // You'll need to play with this.
        File file = getFolder();
        for (int i = 0; i < localIPAddresses.size(); i++) {
-          if (i > 0) { System.out.println(""); }
-          try {
-             System.out.println("Connecting to: " + localIPAddresses.get(i) + " on port: " + port + " - Please Wait...");
-             reciveFile(localIPAddresses.get(i), file);
- 
-             //System.out.println("Just connected to: " + thisSystem.getRemoteSocketAddress());
- 
-             // Reciving rec = new Reciving();
-             // rec.start("192.168.1.25", 6060);
-             break;
-          }
-          catch(IOException e) { System.out.println(e.getLocalizedMessage()); }
-       }
-    }
+         if (i > 0) { System.out.println(""); }
+         try {
+            System.out.println("Connecting to: " + localIPAddresses.get(i) + " on port: " + port + " - Please Wait...");
+            reciveFile(localIPAddresses.get(i), file);
+
+            if (stopProcess)
+            {
+               gi.connected();
+               break;
+            }
+              
+         }
+         catch(IOException e) { 
+            System.out.println(e.getLocalizedMessage());
+            if (stopProcess)
+            {
+               gi.connected();
+               break;
+            }
+               
+         }
+      }
+
+      if (!stopProcess)
+      gi.failConnect();
+
+   }
 
    /************************************************************************
     * 
@@ -108,7 +127,9 @@ public class Reciving {
          }
          fos.flush();
       }
+      stopProcess = true;
       socket.close();
+
    }
 
    /************************************************************************
@@ -118,7 +139,7 @@ public class Reciving {
    {
       JFileChooser fileChooser = new JFileChooser();
       fileChooser.setCurrentDirectory(new File("user.home"));
-      // fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+   
 
       int result = fileChooser.showOpenDialog(null);
       File file = new File("");
