@@ -17,7 +17,7 @@ public class ButtonListener implements ActionListener
          {
             gui.sendFrame(gui.getIP());
             gui.getSending().startServer();
-            gui.resetGui();
+            gui.checkRepeat("File Transfered!");
 
          } catch(IOException ex) {
             System.out.println("ERROR!!!");
