@@ -16,7 +16,7 @@ public class Reciving {
 
        gui.connecting();
  
-       System.out.println("\nTrying To Connect To Devices...");
+       //System.out.println("\nTrying To Connect To Devices...");
        connectToDevices(ipList, port);
     }
    /************************************************************************
@@ -44,7 +44,7 @@ public class Reciving {
                          String[] dataArray = ip.split(" ");
                          // For console output display only...
                          if (dataArray[0].toLowerCase().startsWith("interface:")) {
-                            System.out.println("Locating Devices Connected To: " + dataArray[1]);
+                            //System.out.println("Locating Devices Connected To: " + dataArray[1]);
                          }
                          // If the data line contains the word "dynamic"
                          // then add the IP address on that line to the 
@@ -52,7 +52,7 @@ public class Reciving {
                          if (dataArray[2].equalsIgnoreCase("dynamic")) {
                             ipList.add(dataArray[0]);
                             // For console output display only...
-                            System.out.println("Device Located On IP: " + dataArray[0]);
+                            //System.out.println("Device Located On IP: " + dataArray[0]);
                          }
                       }
                 }
@@ -61,7 +61,7 @@ public class Reciving {
              reader.close();
           } 
           catch (IOException | InterruptedException e) { 
-             System.out.println("\nPROCESS/READER ERROR - " + e.getMessage()); 
+             //System.out.println("\nPROCESS/READER ERROR - " + e.getMessage()); 
           }
           return ipList;
     }
@@ -76,7 +76,7 @@ public class Reciving {
        for (int i = 0; i < localIPAddresses.size(); i++) {
          if (i > 0) { System.out.println(""); }
          try {
-            System.out.println("Connecting to: " + localIPAddresses.get(i) + " on port: " + port + " - Please Wait...");
+            //System.out.println("Connecting to: " + localIPAddresses.get(i) + " on port: " + port + " - Please Wait...");
             reciveFile(localIPAddresses.get(i), file);
 
             if (stopProcess)
@@ -87,7 +87,7 @@ public class Reciving {
               
          }
          catch(IOException e) { 
-            System.out.println(e.getLocalizedMessage());
+            //System.out.println(e.getLocalizedMessage());
             if (stopProcess)
             {
                gui.checkRepeat("Transer Successful!");
